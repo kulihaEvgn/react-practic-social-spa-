@@ -1,5 +1,18 @@
 .navbar_wrap{
     grid-area: n;
     padding:10px 20px;
-    height: 400px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -10px 0px 13px -7px #0c0c0c, 10px 0px 13px -7px #1d1d1d, 5px 5px 15px 5px rgba(0,0,0,0);
+
+}
+.navbar_wrap a {
+    color: inherit;
+    text-decoration: none;
+    padding: 10px;
+}
+.navbar_wrap a.active {
+    transform: scale(1.1);
+    color: rgb(250 104 112);
 }

@@ -1,0 +1,10 @@
+.form_posts{
+    margin-top: 50px;
+    display: flex;
+
+}
+.posts{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
