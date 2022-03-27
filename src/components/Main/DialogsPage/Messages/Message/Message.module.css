@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+.container img{
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 30px;
+}
+.message_blok{
+    background: rgb(51, 51, 51);
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+}
+.name_text{
+    display: flex;
+    flex-direction: column;
+}
+.name_text span:first-child{
+    font-size: 14px;
+    font-style: italic;
+    margin-bottom: 20px;
+}

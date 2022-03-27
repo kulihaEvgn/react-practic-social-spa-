@@ -1,0 +1,31 @@
+.post{
+        display: flex;
+        align-items: center;
+        padding: 20px;
+}
+.post img{
+    width: 80px;
+    border-radius: 50%;
+}
+.post_descr{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    width: 70%;
+    background: rgb(14, 13, 13);
+    padding: 20px;
+    border-radius: 20px 0px 20px 0px;
+    border: 1px solid rgba(245, 222, 179, 0.253);
+}
+.name{
+    text-align: left;
+    font-style: italic;
+}
+.text{
+    text-align: center;
+    word-wrap: break-word;
+    display: block;
+}
+.date{
+    text-align: left;
+}

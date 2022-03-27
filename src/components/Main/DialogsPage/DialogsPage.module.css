@@ -1,0 +1,32 @@
+.container {
+    display: grid;
+    grid-template-columns: 2.5fr 9.5fr;
+    padding: 20px;
+}
+.dialogs_range{
+    max-width: 100%;
+    border-right: 2px solid rgba(73, 72, 71, 0.192);
+}
+.users{
+}
+.users img{
+    display: block;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.users li{
+    margin-bottom: 15px;
+    font-size: 18px;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+.message_range{
+    padding: 20px;
+}
+
+.active{
+    font-size: 21px;
+    color: rgb(116, 89, 236);
+}
