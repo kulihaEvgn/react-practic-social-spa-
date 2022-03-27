@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    
 }
 .messages{
     display: flex;
@@ -18,14 +17,26 @@
     width: 50%;
     align-self: flex-start; 
 }
-.input_wrap{
+/* .input_wrap{
 
-}
+} */
 .message_form input{
     padding: 10px;
     width: 70%;
+    background: transparent;
+    border: 1px solid rgba(95, 94, 94, 0.356);
+    border-radius: 10px;
+    outline: none;
+    color: inherit;
 }
 .message_form button{
     padding: 10px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    background: rgb(77, 75, 75);
+    border: 1px solid rgba(51, 50, 50, 0.356);
+    color: inherit;
+
 }
 

@@ -1,8 +1,19 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Message from './Message/Message'
 import s from './Messages.module.css'
 
 const Messages = (props) => {
+
+    const inputRef = useRef()
+    const addNewMessage = (e) => {
+        e.preventDefault();
+        props.addMessage()
+    }
+    const updateValue = () => {
+        const value = inputRef.current.value;
+        props.changeValue(value);
+    }
+
     return (
         <div className={s.container}>
 
@@ -26,12 +37,13 @@ const Messages = (props) => {
                 </ul>
             </div>
 
-            <div className={s.input_wrap}>
-                <form action="/" className={s.message_form}>
-                    <input value={props.defaultValue} type="text" />
-                    <button>send</button>
-                </form>
-            </div>
+            <form onSubmit={addNewMessage} action="/" className={s.message_form}>
+                <input
+                    onChange={updateValue}
+                    value={props.defaultValue}
+                    ref={inputRef} />
+                <button>send</button>
+            </form>
 
         </div>
     )

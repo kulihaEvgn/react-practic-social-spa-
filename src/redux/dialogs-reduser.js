@@ -1,6 +1,7 @@
 import { v4 as myId } from "uuid"
 
-
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const CHANGE_TEXT_MESSAGE = 'CHANGE-TEXT-MESSAGE';
 
 const initialState = {
     dialogsUsers: [
@@ -20,6 +21,35 @@ const initialState = {
     defaultTextMessage: ''
 }
 export const dialogsReduser = (state = initialState, action) => {
+    switch (action.type) {
+        case ADD_MESSAGE:
+            const nMessage = {
+                id: myId(),
+                me: false,
+                name: 'Ololosha',
+                message: state.defaultTextMessage,
+                avatarUrl: 'https://media.istockphoto.com/vectors/man-silhouette-profile-picture-vector-id526947869?k=20&m=526947869&s=612x612&w=0&h=j528SMpxB1AOCNs-WUcuQjvNRVuO-0PO1djfq-Rq6dE='
+            }
+            return {
+                ...state,
+                messages: [...state.messages, nMessage],
+                defaultTextMessage: ''
+            };
+        case CHANGE_TEXT_MESSAGE:
+            return {
+                ...state,
+                defaultTextMessage: action.text
+            }
+    }
     return state;
 }
 
+export const addMessageAC = () => {
+    return { type: ADD_MESSAGE }
+}
+export const changeTextMessageAC = (message) => {
+    return {
+        type: CHANGE_TEXT_MESSAGE,
+        text: message
+    }
+}
