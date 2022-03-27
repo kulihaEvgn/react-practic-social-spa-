@@ -1,16 +1,16 @@
 import React, { useRef } from 'react';
-import Post from '../Post/Post';
+import Post from './Post/Post';
 import s from './MyPosts.module.css';
 
 
 const MyPosts = (props) => {
-    const textareaValue = useRef();
+    const inputValue = useRef();
 
     const addPost = () => {
         props.addNewPost();
     }
     const changeValue = () => {
-        const value = textareaValue.current.value;
+        const value = inputValue.current.value;
         props.updateValue(value)
     }
 
@@ -20,7 +20,7 @@ const MyPosts = (props) => {
                 e.preventDefault()
                 addPost()
             }} className={s.form_posts} action="/">
-                <input ref={textareaValue} onChange={changeValue} value={props.defaultValue} />
+                <input ref={inputValue} onChange={changeValue} value={props.defaultValue} />
                 <button >Send</button>
             </form>
             <div className={s.posts}>

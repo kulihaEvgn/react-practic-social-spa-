@@ -1,8 +1,6 @@
 import React from 'react';
-import Post from './Post/Post';
 import s from './ProfilePage.module.css';
 import profileBg from '../../../asets/bg_profile.jpg'
-import MyPosts from './MyPosts/MyPosts';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 
 

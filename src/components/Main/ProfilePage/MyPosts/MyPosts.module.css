@@ -1,7 +1,25 @@
 .form_posts{
     margin-top: 50px;
     display: flex;
+    justify-content: center;
+}
+.form_posts input{
+    background: rgb(26, 25, 25);
+    outline: none;
+    border: none;
+    box-shadow: 0px 10px 13px -7px #2e2d2d41, 5px 5px 15px 5px rgba(255,255,255,0);
+    padding: 20px 40px;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 18px;
+    width: 50%;
 
+}
+.form_posts button {
+    padding: 10px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
 }
 .posts{
     margin-top: 50px;
