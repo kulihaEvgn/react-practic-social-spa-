@@ -30,7 +30,11 @@ const DialogsPage = (props) => {
             </div>
 
             <div className={s.message_range}>
-                <Messages messages={props.messages} defaultValue={props.defaultValue} />
+                <Messages
+                    messages={props.messages}
+                    defaultValue={props.defaultValue}
+                    addMessage={props.addMessage}
+                    changeValue={props.changeValue} />
             </div>
 
         </div>
