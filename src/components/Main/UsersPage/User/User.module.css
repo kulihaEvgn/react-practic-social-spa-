@@ -1,0 +1,39 @@
+.container{
+    margin-top: 20px;
+    padding:20px;
+    display: grid;
+    grid-template-columns: 1.5fr 6fr 3fr;
+    align-items: center;    
+}
+.photo_btn  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.photo_btn img {
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+.photo_btn button {
+    border-radius: 5px;
+}
+.name_status{
+    padding: 0 20px;
+    width: 80%;
+    background: rgb(31, 30, 30);
+    border-radius: 0 30px 30px 30px;
+}
+.name_status p {
+    text-align: center;
+    font-style: italic;
+}
+.selectedPAge {
+   font-size: 20px;
+   transition: .1s;
+    
+}
+.wrap span {
+    margin-right: 5px;
+    cursor: pointer;
+    transition: .1s;
+}

@@ -1,11 +1,12 @@
 import React from 'react';
+import { UserContainer } from './User/UserContainer';
 import s from './UsersPage.module.css';
 
 
-const UsersPage = () => {
+const UsersPage = (props) => {
     return (
-        <div>
-
+        <div className={s.container}>
+            <UserContainer />
         </div>
     );
 }

@@ -16,7 +16,7 @@ const initialState = {
 export const profileReduser = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
-            if (!state.defaultPostText == '') {
+            if (!state.defaultPostText === '') {
                 const nPost = { id: myId(), name: 'Selena Gomez', text: state.defaultPostText, date: Date.now() };
                 return {
                     ...state,
