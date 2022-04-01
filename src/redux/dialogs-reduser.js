@@ -40,8 +40,8 @@ export const dialogsReduser = (state = initialState, action) => {
                 ...state,
                 defaultTextMessage: action.text
             }
+        default: return state;
     }
-    return state;
 }
 
 export const addMessageAC = () => {

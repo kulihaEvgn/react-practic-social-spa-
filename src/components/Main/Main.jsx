@@ -3,8 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import s from './Main.module.css';
 
 import ProfilePage from './ProfilePage/ProfilePage';
-import UsersPage from './UsersPage/UsersPage';
 import DialogPageContainer from './DialogsPage/DialogsPageContainer';
+import UsersPage from './UsersPage/UsersPage';
 
 
 const Main = () => {

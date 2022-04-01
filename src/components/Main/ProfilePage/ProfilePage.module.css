@@ -1,20 +1,27 @@
 .profile_wrap{
-    min-height: 500px;
+    display: grid;
+    grid-template-columns: 4fr 8fr;
+    padding: 20px;
+
+}
+.profileData{
     display: flex;
     flex-direction: column;
-}
-
-.profileData{
-    margin-top: 50px;
-    display: flex;
+    align-items: center;
     width: 100%;
     padding-bottom: 20px;
-    border-bottom: 1px solid rgba(43, 42, 42, 0.452);
+    border-right: 2px solid rgba(43, 42, 42, 0.171);
+
 }
 .profileData img{
-    max-width: 150px;
-    border-radius: 5px;
+    width: 150px;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
-.profileData>div{
-    margin-left: 100px;
+.name {
+    text-align: center;
+}
+.skilz {
+    display: flex;
+    font-size: 17px;
 }
