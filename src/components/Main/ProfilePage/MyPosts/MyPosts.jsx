@@ -25,7 +25,7 @@ const MyPosts = (props) => {
             </form>
             <div className={s.posts}>
                 {
-                    props.posts.map(p => <Post key={p.id} name={p.name} text={p.text} date={p.date} />)
+                    props.posts.map(p => <Post key={p.id} name={props.name} text={p.text} date={p.date} photo={props.photo} />)
                 }
             </div>
         </div>

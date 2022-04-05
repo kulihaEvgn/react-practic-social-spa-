@@ -1,9 +1,7 @@
 .header_wrap{
+    margin: 0 auto;
     grid-area: h;
     padding:10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 95%;
     box-shadow: 0px 10px 13px -7px #2e2d2d, 5px 5px 15px 5px rgba(255,255,255,0);
 }
