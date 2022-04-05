@@ -1,11 +1,12 @@
 import React from 'react';
 import s from './Post.module.css';
+import profilePhoto from '../../../../../asets/profilePhoto.jpeg'
 
 
 const Post = (props) => {
     return (
         <div className={s.post}>
-            <img src="https://d2qp0siotla746.cloudfront.net/img/use-cases/profile-picture/template_3.jpg" alt="" />
+            <img src={props.photo ? props.photo : profilePhoto} alt="" />
             <div className={s.post_descr}>
                 <div className={s.name}>{props.name}</div>
                 <div className={s.text}>{props.text}</div>

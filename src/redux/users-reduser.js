@@ -4,12 +4,14 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 const SET_USERS_COUNT = 'SET_USERS_COUNT';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 const initialState = {
     users: [],
     totalUserCount: 200,
     pageSize: 5,
-    currentPage: 2
+    currentPage: 1,
+    isFetching: false
 }
 export const usersReduser = (state = initialState, action) => {
 
@@ -49,24 +51,32 @@ export const usersReduser = (state = initialState, action) => {
                 ...state,
                 currentPage: action.page
             }
+        case TOGGLE_IS_FETCHING:
+            return {
+                ...state,
+                isFetching: action.isFetching
+            }
         default: return state;
     }
 }
 
 
 
-export const followAC = (id) => {
+export const follow = (id) => {
     return { type: FOLLOW, id: id }
 }
-export const unFollowAC = (id) => {
+export const unFollow = (id) => {
     return { type: UNFOLLOW, id: id }
 }
-export const setUsersAC = (users) => {
+export const setUsers = (users) => {
     return { type: SET_USERS, users: users }
 }
-export const setTotlaUsersCountAC = (usersNum) => {
+export const setTotlaUsersCount = (usersNum) => {
     return { type: SET_USERS_COUNT, usersNum: usersNum }
 }
-export const setCurrentPageAC = (page) => {
+export const setCurrentPage = (page) => {
     return { type: SET_CURRENT_PAGE, page: page }
+}
+export const toggleIsFetching = (isFetching) => {
+    return { type: TOGGLE_IS_FETCHING, isFetching: isFetching }
 }
