@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 
 const mapStateToProps = (state) => {
     return {
-        links: state.navbar.links
+        userId: state.auth.id
     }
 }
 

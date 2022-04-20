@@ -1,14 +1,13 @@
 import React from 'react'
-import Messages from './Messages/Messages'
+import Messages from './Messages/Messages';
+
 
 import s from './DialogsPage.module.css'
 import { NavLink } from 'react-router-dom'
 
 const DialogsPage = (props) => {
-
     return (
         <div className={s.container}>
-
             <div className={s.dialogs_range}>
                 <ul className={s.users}>
                     {
