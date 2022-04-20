@@ -1,8 +1,10 @@
 import { v4 as myId } from "uuid";
+import { getUserProfile, getUserStatus, updateStatus } from "../api/api";
 
 const ADD_POST = 'ADD-POST';
 const CHANGE_POST_TEXT = 'CHANGE-POST-TEXT';
 const SET_PROFILE = 'SET_PROFILE';
+const SET_STATUS = 'SET_STATUS'
 
 
 const initialState = {
@@ -13,6 +15,7 @@ const initialState = {
     ],
     defaultPostText: '',
     profile: null,
+    userStatus: ''
 }
 
 export const profileReduser = (state = initialState, action) => {
@@ -29,25 +32,38 @@ export const profileReduser = (state = initialState, action) => {
         case CHANGE_POST_TEXT:
             return {
                 ...state,
-                defaultPostText: action.text
+                defaultPostText: action.value
             }
         case SET_PROFILE:
             return {
                 ...state,
                 profile: action.profile
             }
+        case SET_STATUS:
+            return {
+                ...state,
+                userStatus: action.status
+            }
+
         default:
             return state;
     }
 }
 
+// actionCreators
+export const addPostAC = () => ({ type: ADD_POST });
+export const changePostTextAC = (value) => ({ type: CHANGE_POST_TEXT, value });
+const setProfile = (profile) => ({ type: SET_PROFILE, profile });
+const setStatus = (status) => ({ type: SET_STATUS, status });
 
-export const addPostAC = () => {
-    return { type: ADD_POST }
+// Redux Thunks
+export const getProfile = (userId) => (dispatch) => {
+    getUserProfile(userId).then(res => dispatch(setProfile(res.data)))
 }
-export const changePostTextAC = (value) => {
-    return { type: CHANGE_POST_TEXT, text: value }
+export const setStatusProfile = (userId) => (dispatch) => {
+    getUserStatus(userId).then(res => dispatch(setStatus(res)))
 }
-export const setProfile = (profile) => {
-    return { type: SET_PROFILE, profile: profile }
+export const updateStatusProfile = (status) => (dispatch) => {
+    updateStatus(status).then(res => dispatch(setStatus(status)));
 }
+

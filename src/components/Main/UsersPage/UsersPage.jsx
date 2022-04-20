@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserContainer } from './User/UserContainer';
+import UserContainer from './User/UserContainer';
 import s from './UsersPage.module.css';
 
 

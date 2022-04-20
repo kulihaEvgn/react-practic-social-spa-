@@ -3,11 +3,10 @@ import s from './ProfileInfo.module.css';
 
 import { Link } from 'react-router-dom';
 import profilePhoto from '../../../../asets/profilePhoto.jpeg'
+import ProfileStatus from './ProfileStatus';
 
 
 const ProfileInfo = (props) => {
-    console.log(props.profile);
-
 
     const contacts = Object.entries(props.profile.contacts)
         .filter(([name, url]) => url !== null)
@@ -37,7 +36,7 @@ const ProfileInfo = (props) => {
             </div>
             <div>
                 <div>
-
+                    <ProfileStatus status={props.status} updateStatusProfile={props.updateStatusProfile} />
                 </div>
             </div>
         </div>

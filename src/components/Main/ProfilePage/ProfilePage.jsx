@@ -8,7 +8,7 @@ const ProfilePage = (props) => {
     if (!props.profile) return <Preloader />;
     return (
         <div className={s.profile_wrap}>
-            <ProfileInfo profile={props.profile} />
+            <ProfileInfo profile={props.profile} status={props.status} updateStatusProfile={props.updateStatusProfile} />
             <MyPostsContainer photo={props.profile.photos.small} name={props.profile.fullName} />
         </div>
     );
