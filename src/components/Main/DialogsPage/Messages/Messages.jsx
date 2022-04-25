@@ -1,18 +1,19 @@
-import React, { useRef } from 'react'
+import { useFormik } from 'formik'
+import React from 'react'
 import Message from './Message/Message'
 import s from './Messages.module.css'
 
 const Messages = (props) => {
 
-    const inputRef = useRef()
-    const addNewMessage = (e) => {
-        e.preventDefault();
-        props.addMessage()
-    }
-    const updateValue = () => {
-        const value = inputRef.current.value;
-        props.changeValue(value);
-    }
+    const formik = useFormik({
+        initialValues: {
+            message: ''
+        },
+        onSubmit() {
+            props.changeValue(formik.values.message);
+            props.addMessage()
+        }
+    })
 
     return (
         <div className={s.container}>
@@ -25,7 +26,6 @@ const Messages = (props) => {
                             return (
                                 <li key={m.id} className={clas}>
                                     <Message
-
                                         name={m.name}
                                         message={m.message}
                                         photo={m.avatarUrl} />
@@ -37,12 +37,9 @@ const Messages = (props) => {
                 </ul>
             </div>
 
-            <form onSubmit={addNewMessage} action="/" className={s.message_form}>
-                <input
-                    onChange={updateValue}
-                    value={props.defaultValue}
-                    ref={inputRef} />
-                <button>send</button>
+            <form onSubmit={formik.handleSubmit} className={s.message_form}>
+                <input name='message' {...formik.getFieldProps('message')} />
+                <button type='submit'>send</button>
             </form>
 
         </div>

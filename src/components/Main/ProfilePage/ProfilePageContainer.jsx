@@ -30,5 +30,5 @@ const mapStateToProps = (state) => {
 }
 export default compose(
     connect(mapStateToProps, { getProfile, setStatusProfile, updateStatusProfile }),
-    // withAutnRedirect 
+    withAutnRedirect
 )(ProfilePageContainer)

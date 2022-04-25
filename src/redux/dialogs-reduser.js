@@ -25,7 +25,7 @@ export const dialogsReduser = (state = initialState, action) => {
         case ADD_MESSAGE:
             const nMessage = {
                 id: myId(),
-                me: false,
+                me: true,
                 name: 'Ololosha',
                 message: state.defaultTextMessage,
                 avatarUrl: 'https://media.istockphoto.com/vectors/man-silhouette-profile-picture-vector-id526947869?k=20&m=526947869&s=612x612&w=0&h=j528SMpxB1AOCNs-WUcuQjvNRVuO-0PO1djfq-Rq6dE='

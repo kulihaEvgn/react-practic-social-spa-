@@ -1,27 +1,26 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import Post from './Post/Post';
 import s from './MyPosts.module.css';
+import { useFormik } from 'formik';
 
 
 const MyPosts = (props) => {
-    const inputValue = useRef();
+    const formik = useFormik({
+        initialValues: {
+            post: ''
+        },
+        onSubmit() {
+            props.updateValue(formik.values.post)
+            props.addNewPost();
+        }
+    })
 
-    const addPost = () => {
-        props.addNewPost();
-    }
-    const changeValue = () => {
-        const value = inputValue.current.value;
-        props.updateValue(value)
-    }
 
     return (
         <div>
-            <form onSubmit={(e) => {
-                e.preventDefault()
-                addPost()
-            }} className={s.form_posts} action="/">
-                <input ref={inputValue} onChange={changeValue} value={props.defaultValue} />
-                <button >Send</button>
+            <form onSubmit={formik.handleSubmit} className={s.form_posts} >
+                <input name='post' {...formik.getFieldProps('post')} />
+                <button type='submit'>Send</button>
             </form>
             <div className={s.posts}>
                 {
