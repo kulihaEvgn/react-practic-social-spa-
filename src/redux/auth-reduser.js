@@ -1,12 +1,14 @@
-import { signIn } from "../api/api";
+import { logOut, postLoginData, signIn } from "../api/api";
 const SET_USER_DATA = 'SET_USER_DATA';
 const LOG_IN = 'LOG_IN';
+
 
 const initialState = {
     email: null,
     id: null,
     login: null,
-    isLogined: false
+    isLogined: false,
+    errorMessage: ''
 }
 
 export const authReduser = (state = initialState, action) => {
@@ -21,6 +23,11 @@ export const authReduser = (state = initialState, action) => {
                 ...state,
                 isLogined: action.isLogined
             }
+        case 'SET_STATUS':
+            return {
+                ...state,
+                errorMessage: action.payload
+            }
         default: return state;
     }
 }
@@ -34,8 +41,30 @@ export const logined = (isLogined) => {
 
 // this thunk 
 export const authentication = () => (dispatch) => {
-    dispatch(logined(false))
     signIn().then(data => {
-        dispatch(setUserData(data.data));
+        if (data.resultCode === 0) {
+            dispatch(setUserData(data.data));
+        }
     });
+}
+export const logInToMyProfile = ({ ...values }, setStatus) => (dispatch) => {
+    postLoginData({ ...values }).then(res => {
+        if (res.data.resultCode === 0) {
+            dispatch(authentication())
+            dispatch(logined(true))
+        } else {
+            console.log(res);
+            setStatus('Не правильный логин или пароль')
+        }
+    })
+}
+export const logOutMyProfile = () => (dispatch) => {
+    logOut().then(res => {
+        if (res.data.resultCode === 0) {
+            dispatch(logined(false))
+            dispatch(setUserData(null, null, null))
+        }
+    })
+
+
 }

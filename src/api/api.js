@@ -2,7 +2,7 @@ import axios from "axios"
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
-    headers: { 'API-KEY': '224be7b6-fc7c-4d93-8b03-7d5e223d2bfe' },
+    headers: { 'API-KEY': 'cbef2697-878e-4bc5-9e12-0d3e3882a3ad' },
 })
 
 
@@ -27,3 +27,9 @@ export const getUserStatus = (userId) => {
 export const updateStatus = (status) => {
     return instance.put('profile/status/', { status })
 };
+export const postLoginData = ({ email, password, rememberMe, captcha }) => {
+    return instance.post('auth/login', { email, password, rememberMe, captcha })
+}
+export const logOut = () => {
+    return instance.delete('auth/login')
+}
