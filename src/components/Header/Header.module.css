@@ -7,3 +7,13 @@
     display: flex;
     justify-content: space-between;
 }
+
+.container{
+    display: flex;
+}
+.header_img{
+    width: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 50%;
+}

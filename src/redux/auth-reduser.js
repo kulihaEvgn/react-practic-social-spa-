@@ -14,20 +14,11 @@ const initialState = {
 export const authReduser = (state = initialState, action) => {
     switch (action.type) {
         case SET_USER_DATA:
-            return {
-                ...state,
-                ...action.data
-            }
+            return { ...state, ...action.data }
         case LOG_IN:
-            return {
-                ...state,
-                isLogined: action.isLogined
-            }
+            return { ...state, isLogined: action.isLogined }
         case 'SET_STATUS':
-            return {
-                ...state,
-                errorMessage: action.payload
-            }
+            return { ...state, errorMessage: action.payload }
         default: return state;
     }
 }
@@ -40,31 +31,26 @@ export const logined = (isLogined) => {
 }
 
 // this thunk 
-export const authentication = () => (dispatch) => {
-    signIn().then(data => {
-        if (data.resultCode === 0) {
-            dispatch(setUserData(data.data));
-        }
-    });
+export const authentication = () => async (dispatch) => {
+    const data = await signIn();
+    if (data.resultCode === 0) {
+        dispatch(setUserData(data.data));
+    }
 }
-export const logInToMyProfile = ({ ...values }, setStatus) => (dispatch) => {
-    postLoginData({ ...values }).then(res => {
-        if (res.data.resultCode === 0) {
-            dispatch(authentication())
-            dispatch(logined(true))
-        } else {
-            console.log(res);
-            setStatus('Не правильный логин или пароль')
-        }
-    })
+export const logInToMyProfile = ({ ...values }, setStatus) => async (dispatch) => {
+    const res = await postLoginData({ ...values })
+    if (res.data.resultCode === 0) {
+        dispatch(authentication())
+        dispatch(logined(true))
+    } else {
+        setStatus('Не правильный логин или пароль')
+    }
+
 }
-export const logOutMyProfile = () => (dispatch) => {
-    logOut().then(res => {
-        if (res.data.resultCode === 0) {
-            dispatch(logined(false))
-            dispatch(setUserData(null, null, null))
-        }
-    })
-
-
+export const logOutMyProfile = () => async (dispatch) => {
+    const res = await logOut()
+    if (res.data.resultCode === 0) {
+        dispatch(logined(false))
+        dispatch(setUserData(null, null, null))
+    }
 }
