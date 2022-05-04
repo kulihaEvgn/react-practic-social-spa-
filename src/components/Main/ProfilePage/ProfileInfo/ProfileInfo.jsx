@@ -4,11 +4,13 @@ import s from './ProfileInfo.module.css';
 import { Link } from 'react-router-dom';
 import profilePhoto from '../../../../asets/profilePhoto.jpeg'
 import ProfileStatus from './ProfileStatus';
+import { useEffect } from 'react';
+import Preloader from '../../../comon/Preloader/Preloader';
 
 
-const ProfileInfo = (props) => {
+const ProfileInfo = ({ profile, status, updateStatusProfile, isOwner, onChangePhoto, isLoading }) => {
 
-    const contacts = Object.entries(props.profile.contacts)
+    const contacts = Object.entries(profile.contacts)
         .filter(([name, url]) => url !== null)
         .map(([name, url]) => {
             return (
@@ -18,15 +20,17 @@ const ProfileInfo = (props) => {
 
             )
         })
+    const handelChange = (e) => onChangePhoto(e.target.files[0]);
 
     return (
         <div className={s.profileData}>
-            <span>{props.profile.lookingForAJob ? 'in sarch' : null}</span>
-            <img src={props.profile.photos.large ? props.profile.photos.large : profilePhoto} alt="" />
+            <span>{profile.lookingForAJob ? 'in sarch' : null}</span>
+            {isLoading ? <Preloader /> : <img src={profile.photos.large || profile.photos.small || profilePhoto} alt="" />}
 
+            {isOwner && <input type="file" onChange={handelChange} />}
             <div className={s.name}>
-                <h2>{props.profile.fullName}</h2>
-                <p>{props.profile.aboutMe}</p>
+                <h2>{profile.fullName}</h2>
+                <p>{profile.aboutMe}</p>
             </div>
             <div className={s.skilz}>
                 <h3>Contacts:</h3>
@@ -36,7 +40,7 @@ const ProfileInfo = (props) => {
             </div>
             <div>
                 <div>
-                    <ProfileStatus status={props.status} updateStatusProfile={props.updateStatusProfile} />
+                    <ProfileStatus userStatus={status} updateStatusProfile={updateStatusProfile} />
                 </div>
             </div>
         </div>

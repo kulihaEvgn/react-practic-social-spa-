@@ -1,15 +1,15 @@
 import React from 'react'
 import s from './Message.module.css'
 
-const Message = (props) => {
+const Message = ({ photo, name, message }) => {
     return (
 
         <div className={s.container} >
-            <img src={props.photo} alt="" />
+            <img src={photo} alt="" />
             <div className={s.message_blok}>
                 <div className={s.name_text}>
-                    <span>{props.name}</span>
-                    <span>{props.message}</span>
+                    <span>{name}</span>
+                    <span>{message}</span>
                 </div>
             </div>
         </div>

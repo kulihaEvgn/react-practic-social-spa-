@@ -3,15 +3,15 @@ import React from 'react'
 import Message from './Message/Message'
 import s from './Messages.module.css'
 
-const Messages = (props) => {
+const Messages = ({ changeValue, addMessage, messages }) => {
 
     const formik = useFormik({
         initialValues: {
             message: ''
         },
         onSubmit() {
-            props.changeValue(formik.values.message);
-            props.addMessage()
+            changeValue(formik.values.message);
+            addMessage()
         }
     })
 
@@ -21,7 +21,7 @@ const Messages = (props) => {
             <div className={s.messages_wrap}>
                 <ul className={s.messages}>
                     {
-                        props.messages.map(m => {
+                        messages.map(m => {
                             const clas = m.me ? s.left : s.rigth;
                             return (
                                 <li key={m.id} className={clas}>

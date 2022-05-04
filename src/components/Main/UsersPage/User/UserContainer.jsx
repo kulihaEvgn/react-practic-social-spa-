@@ -33,7 +33,8 @@ const mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
         isFollowingUsersId: state.usersPage.isFollowingUsersId,
-        isLogined: state.auth.isLogined
+        isLogined: state.auth.isLogined,
+        portionSize: state.usersPage.portionSize
     }
 }
 export default compose(

@@ -10,7 +10,7 @@ import Preloader from '../comon/Preloader/Preloader';
 
 
 
-const Login = (props) => {
+const Login = ({ logInToMyProfile, myId, isLogined }) => {
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -26,16 +26,16 @@ const Login = (props) => {
                 .required('Поле должно быть заполненно'),
         }),
         onSubmit(values, { resetForm, setSubmitting, setStatus }) {
-            props.logInToMyProfile({ ...values }, setStatus)
+            logInToMyProfile({ ...values }, setStatus)
             setSubmitting(false);
             resetForm();
 
         },
 
     })
-    if (props.isLogined) {
-        return props.myId
-            ? <Navigate to={`/profile/${props.myId}`} />
+    if (isLogined) {
+        return myId
+            ? <Navigate to={`/profile/${myId}`} />
             : <Preloader />
     }
     return (

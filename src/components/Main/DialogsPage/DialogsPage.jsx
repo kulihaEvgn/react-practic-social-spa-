@@ -4,14 +4,16 @@ import Messages from './Messages/Messages';
 
 import s from './DialogsPage.module.css'
 import { NavLink } from 'react-router-dom'
+import Preloader from "../../comon/Preloader/Preloader"
 
-const DialogsPage = (props) => {
+const DialogsPage = ({ users, messages, defaultValue, addMessage, changeValue, isLogined }) => {
+    // if (!isLogined) return <Preloader />
     return (
         <div className={s.container}>
             <div className={s.dialogs_range}>
                 <ul className={s.users}>
                     {
-                        props.users.map(u => {
+                        users.map(u => {
                             return (
                                 <li key={u.id}>
                                     <img src={u.photo} alt="" />
@@ -24,20 +26,17 @@ const DialogsPage = (props) => {
                             )
                         })
                     }
-
                 </ul>
             </div>
-
             <div className={s.message_range}>
                 <Messages
-                    messages={props.messages}
-                    defaultValue={props.defaultValue}
-                    addMessage={props.addMessage}
-                    changeValue={props.changeValue} />
+                    messages={messages}
+                    defaultValue={defaultValue}
+                    addMessage={addMessage}
+                    changeValue={changeValue} />
             </div>
-
         </div>
     )
 }
 
-export default DialogsPage
+export default DialogsPage;

@@ -4,12 +4,12 @@ import MyPostsContainer from './MyPosts/MyPostsContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import Preloader from '../../comon/Preloader/Preloader'
 
-const ProfilePage = (props) => {
-    if (!props.profile) return <Preloader />;
+const ProfilePage = ({ profile, status, updateStatusProfile, isOwner, savePhoto, onChangePhoto, isLoading }) => {
+    if (!profile) return <Preloader />;
     return (
         <div className={s.profile_wrap}>
-            <ProfileInfo profile={props.profile} status={props.status} updateStatusProfile={props.updateStatusProfile} />
-            <MyPostsContainer photo={props.profile.photos.small} name={props.profile.fullName} />
+            <ProfileInfo isLoading={isLoading} onChangePhoto={onChangePhoto} savePhoto={savePhoto} isOwner={isOwner} profile={profile} status={status} updateStatusProfile={updateStatusProfile} />
+            <MyPostsContainer photo={profile.photos.small} name={profile.fullName} />
         </div>
     );
 }

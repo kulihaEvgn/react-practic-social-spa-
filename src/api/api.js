@@ -33,3 +33,12 @@ export const postLoginData = ({ email, password, rememberMe, captcha }) => {
 export const logOut = () => {
     return instance.delete('auth/login')
 }
+export const updateUserPhoto = (photoFile) => {
+    const formaData = new FormData();
+    formaData.append('image', photoFile);
+    return instance.put(`profile/photo`, formaData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })
+}
