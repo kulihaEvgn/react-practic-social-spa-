@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import UserContainer from './User/UserContainer';
 import s from './UsersPage.module.css';
 

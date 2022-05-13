@@ -27,8 +27,8 @@ export const getUserStatus = (userId) => {
 export const updateStatus = (status) => {
     return instance.put('profile/status/', { status })
 };
-export const postLoginData = ({ email, password, rememberMe, captcha }) => {
-    return instance.post('auth/login', { email, password, rememberMe, captcha })
+export const postLoginData = ({ ...values }) => {
+    return instance.post('auth/login', { ...values })
 }
 export const logOut = () => {
     return instance.delete('auth/login')
@@ -41,4 +41,7 @@ export const updateUserPhoto = (photoFile) => {
             'Content-Type': 'multipart/form-data'
         }
     })
+}
+export const getCaptcaUrl = () => {
+    return instance.get('security/get-captcha-url').then(res => res.data.url)
 }
